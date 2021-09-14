@@ -39,7 +39,7 @@ class PublicAuthorApiTests(TestCase):
 
         res = self.client.get(AUTHOR_LIST_URL)
 
-        authors = Author.objects.all().order_by('-name')
+        authors = Author.objects.all().order_by('id')
         serializer = AuthorSerializer(authors, many=True)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
